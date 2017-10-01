@@ -1,8 +1,7 @@
 package info.hou8.coral.node.core.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,9 +15,8 @@ import java.util.List;
  * @since : 2017/9/25
  */
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
+@ToString(exclude = "nodeList")
 public class NodeCategory {
 
     @Id

@@ -1,8 +1,6 @@
 package info.hou8.coral.node.core.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -15,10 +13,13 @@ import java.time.LocalDateTime;
  * @since : 2017/9/25
  */
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode
-public class Node {
+@Data
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+        name = "type",
+        discriminatorType = DiscriminatorType.STRING
+)
+public abstract class Node {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
